@@ -1,11 +1,15 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'node:lts-alpine'
+      args '-p 3000:3000'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
-        sh '''npm config set user 0
-npm config set unsafe-perm true
-echo \'Installing npm dependencies...\'
+        sh '''echo \'Installing npm dependencies...\'
 npm install
 echo \'Building the Next.js project...\'
 npm run build'''
