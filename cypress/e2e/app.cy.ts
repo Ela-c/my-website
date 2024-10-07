@@ -4,6 +4,7 @@
 // https://github.com/cypress-io/eslint-plugin-cypress
 
 // Cypress E2E Tests
+import Home from "../../app/page";
 
 describe("Navigation", () => {
   it("Open the Url", () => {
@@ -15,6 +16,7 @@ describe("Navigation", () => {
     // Start from the index page
     cy.visit("http://localhost:3000");
     // Find a link with an href attribute containing "about" and click it
+    cy.mount(<Home />);
     cy.get('a[href*="about"]').click();
 
     // The new url should include "/about"
