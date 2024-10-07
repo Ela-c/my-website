@@ -11,6 +11,7 @@ pipeline {
       steps {
         sh '''echo \'Installing npm dependencies...\'
 npm install
+npm install netlify-cli --save-dev
 echo \'Building the Next.js project...\'
 npm run build'''
       }
@@ -42,7 +43,6 @@ npm run component:headless'''
     stage('Release') {
       steps {
         sh '''echo \'Deploying to Netlify...\'
-npm install netlify-cli --save-dev
 netlify deploy --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID'''
       }
     }
