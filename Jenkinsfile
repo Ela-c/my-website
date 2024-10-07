@@ -13,11 +13,6 @@ pipeline {
 npm install
 echo \'Building the Next.js project...\'
 npm run build'''
-        sh '''apk add --no-cache curl  // Install curl
-curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter 
-chmod +x ./cc-test-reporter
-curl -L https://github.com/codeclimate/codeclimate/releases/latest/download/codeclimate > ./codeclimate
-chmod +x ./codeclimate'''
       }
     }
 
@@ -27,9 +22,6 @@ chmod +x ./codeclimate'''
 npm run e2e:headless'''
         sh '''echo \'Running Cypress Component tests...\'
 npm run component:headless'''
-        sh '''echo "Running Code Quality Analysis ..."
-./codeclimate analyze -f json > codeclimate-analysis.json
-cat codeclimate-analysis.json'''
       }
     }
 
