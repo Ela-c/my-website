@@ -13,9 +13,8 @@ pipeline {
         sh '''echo \'Installing npm dependencies...\'
 npm install
 echo \'Building the Next.js project...\'
-sh \'npm run build\''''
+npm run build'''
         sh '''apk add --no-cache curl  // Install curl
-npm install
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter 
 chmod +x ./cc-test-reporter
 curl -L https://github.com/codeclimate/codeclimate/releases/latest/download/codeclimate > ./codeclimate
@@ -45,6 +44,7 @@ cat codeclimate-analysis.json'''
           env.PREVIEW_URL = previewUrl
         }
 
+        input 'Finished using the web site? (Select "Proceed" to continue)'
       }
     }
 
