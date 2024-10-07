@@ -10,7 +10,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''echo \'Installing npm dependencies...\'
+        sh '''npm config set user 0
+npm config set unsafe-perm true
+echo \'Installing npm dependencies...\'
 npm install
 echo \'Building the Next.js project...\'
 npm run build'''
